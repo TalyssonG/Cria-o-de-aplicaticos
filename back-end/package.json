@@ -1,0 +1,19 @@
+{
+  "name": "curso-rn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.6",
+    "uuidv4": "^6.2.4"
+  }
+}
