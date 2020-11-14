@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
+import api from './services/api'
 
 function App() {
 
   const [projects, setProjects] = useState(["Facebook", "Uber"])
+
+  useEffect(() =>{
+    api.get('projeto').then(response => {
+      console.log(response)
+      setProjects(response.data)
+    })
+  }, [])
 
   function handleAddProject() {
 
@@ -16,8 +24,8 @@ function App() {
       <Header title="React">
         <ul>
           {projects.map(project => (
-            <li key={project}>
-              {project}
+            <li key={project.id}>
+              {project.title}
             </li>
           ))}
         </ul>
