@@ -1,38 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from './components/Header'
 import api from './services/api'
 
 function App() {
 
-  const [projects, setProjects] = useState(["Facebook", "Uber"])
+  const [projects, setProjects] = useState([])
 
-  useEffect(() =>{
+  useEffect(() => {
     api.get('projeto').then(response => {
-      console.log(response)
       setProjects(response.data)
     })
   }, [])
 
-  function handleAddProject() {
+  async function handleAddProject(){
 
-    setProjects([...projects, `Projeto criado em: ${Date.now()}`])
+    // setProjects([...projects, `Projeto criado em: ${Date.now()}`])
+    const response = await api.post('projeto', {
+      title: `Projeto estático: ${Date.now()}`,
+      dev: "Samuel"
+    })
+
+    const projeto = response.data
+
+    setProjects([...projects, projeto])
+
 
   }
- 
-  return (
-    <>
-      <Header title="React">
-        <ul>
-          {projects.map(project => (
-            <li key={project.id}>
-              {project.title}
-            </li>
-          ))}
-        </ul>
-      </Header>
 
-      <button type="button" onClick={handleAddProject}>
-        Adicionar Projeto
+  return(
+    <>
+        <Header title="React">
+          <ul>
+            {projects.map(project => (
+              <li key={project.id}>
+                {project.title}
+              </li>
+            ))}
+          </ul>
+        </Header>
+
+        <button type="button" onClick={handleAddProject}>
+          Adicionar Projeto
         </button>
 
     </>
@@ -40,3 +48,4 @@ function App() {
 }
 
 export default App;
+
