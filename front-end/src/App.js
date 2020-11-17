@@ -38,7 +38,7 @@ function App() {
             ))}
           </ul>
         </Header>
-
+ yarn start
         <button type="button" onClick={handleAddProject}>
           Adicionar Projeto
         </button>
