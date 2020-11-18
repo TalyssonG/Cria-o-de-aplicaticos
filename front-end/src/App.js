@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Header from './components/Header'
+import Header from './componentes/Header'
 import api from './services/api'
 
 function App() {
@@ -38,7 +38,7 @@ function App() {
             ))}
           </ul>
         </Header>
- yarn start
+
         <button type="button" onClick={handleAddProject}>
           Adicionar Projeto
         </button>
@@ -48,4 +48,3 @@ function App() {
 }
 
 export default App;
-
